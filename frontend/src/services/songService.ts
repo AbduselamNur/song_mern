@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import rootReducer from "../redux/rootReducer";
 import { setSongs } from "../redux/songsSlice";
 import { dispatch } from "../redux/store";
+import { setStatistics } from "../redux/statisticsSlice";
 
 
 const baseUrl = "http://localhost:3001/api";
@@ -15,7 +16,8 @@ export const fetchSongs = async () => {
 
 export const fetchStatistics = async () => {
     const response = await axios.get(`${baseUrl}/statistics`);
-    return response.data;
+    dispatch(setStatistics(response.data));
+    // return response.data;
 };
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

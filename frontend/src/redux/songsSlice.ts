@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ObjectId } from 'mongodb';
 
 interface Song {
-    _id: ObjectId | null | undefined;
+    _id?: string;
     title: string;
     artist: string;
     album: string;
