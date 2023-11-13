@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
 import { space, layout, color, typography } from 'styled-system';
+import { Link } from 'react-router-dom';
 
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
-  margin-top: 16px;
+  margin-left: 10%;
+  margin-top: 15%;
 `;
 
 export const TableRow = styled.tr`
@@ -157,4 +159,30 @@ export const FlexContainer = styled.div`
   justify-content: flex-end;
   margin-bottom: 30px;
   margin-right: 10px;
+`;
+
+export const SidebarContainer = styled.div`
+  background-color: #333;
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+`;
+
+export const SidebarLink = styled(Link)`
+  display: block;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #555;
+  }
+`;
+
+export const ContentContainer = styled.div`
+  margin-left: 200px; 
+  padding: 16px;
 `;

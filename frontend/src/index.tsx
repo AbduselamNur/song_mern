@@ -6,7 +6,12 @@ import store from './redux/store';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
+    <>
     <Route path="//" element={<SongList />} />
+    <Route path="/genre" element={<SongList />} />,
+    <Route path="/album" element={<SongList />} />,
+    <Route path="/artist" element={<SongList />} />
+    </>,
   )
 );
 function App() {

@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from '../redux/rootReducer';
 import { fetchSongs } from "../services/songService";
-import { Table, TableRow, TableHeader, TableData, StyledButton, DeleteButton, FlexContainer,  } from './StyledComponents';
+import { Table, TableRow, TableHeader, TableData, StyledButton,
+    DeleteButton, FlexContainer, ContentContainer } from './StyledComponents';
 import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 import AddSongModal from "./AddSongModel";
 import { removeSong, setSongs } from "../redux/songsSlice";
 import axios from 'axios';
+import Sidebar from "./SideBar";
 import UpdateSongModal from "./UpdateSongModal";
 
 
@@ -63,6 +65,8 @@ const SongList = () => {
 
     return (
         <div>
+            <Sidebar />
+            <ContentContainer>
         <h1>Songs</h1>
         <FlexContainer>
         <StyledButton onClick={handleAddSongModalOpen}>Add Song</StyledButton>
@@ -90,12 +94,13 @@ const SongList = () => {
         <AddSongModal isOpen={isAddSongModalOpen} onClose={handleAddSongModalClose} />
         <UpdateSongModal isOpen={isUpdateSongModalOpen} onClose={handleUpdateSongModalClose} song={selectedSong} />
         {/* {songToDelete && (
-        <div>
-          <p>Are you sure you want to delete the song "{songToDelete}"?</p>
-        <StyledButton onClick={handleDeleteSong}>Yes</StyledButton>
-                            <StyledButton onClick={() => setSongToDelete('')}>No</StyledButton>
-                        </div>
-                    )} */}
+            <div>
+            <p>Are you sure you want to delete the song "{songToDelete}"?</p>
+            <StyledButton onClick={handleDeleteSong}>Yes</StyledButton>
+            <StyledButton onClick={() => setSongToDelete('')}>No</StyledButton>
+            </div>
+        )} */}
+        </ContentContainer>
                         </div>
                 )
         }
