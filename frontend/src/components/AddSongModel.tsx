@@ -24,6 +24,7 @@ const AddSongModal: React.FC<AddSongModalProps> = ({ isOpen, onClose }) => {
     try {
         const response = await axios.post('http://localhost:3001/api/songs', newSong);
         dispatch(addSong(response.data));
+        setNewSong({ title: '', artist: '', album: '', genre: '' });
         onClose();
     } catch (error) {
         console.error(error);
