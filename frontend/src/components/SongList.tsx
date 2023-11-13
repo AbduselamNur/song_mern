@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from '../redux/rootReducer';
 import { fetchSongs } from "../services/songService";
-import { Table, TableRow, TableHeader, TableData, StyledButton, DeleteButton,  } from './StyledComponents';
+import { Table, TableRow, TableHeader, TableData, StyledButton, DeleteButton, FlexContainer,  } from './StyledComponents';
 import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 import AddSongModal from "./AddSongModel";
 import { removeSong, setSongs } from "../redux/songsSlice";
@@ -64,7 +64,9 @@ const SongList = () => {
     return (
         <div>
         <h1>Songs</h1>
+        <FlexContainer>
         <StyledButton onClick={handleAddSongModalOpen}>Add Song</StyledButton>
+        </FlexContainer>
         <Table>
             <TableRow>
                 <TableHeader>Title</TableHeader>

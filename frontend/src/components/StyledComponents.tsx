@@ -152,3 +152,9 @@ export const DeleteConfirmationButton = styled.button`
   }
 `;
 
+export const FlexContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+  margin-right: 10px;
+`;
