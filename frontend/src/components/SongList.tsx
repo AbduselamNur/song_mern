@@ -5,7 +5,7 @@ import { fetchSongs } from "../services/songService";
 import { Table, TableRow, TableHeader, TableData, StyledButton, DeleteButton,  } from './StyledComponents';
 import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 import AddSongModal from "./AddSongModel";
-import { removeSong } from "../redux/songsSlice";
+import { removeSong, setSongs } from "../redux/songsSlice";
 import axios from 'axios';
 import UpdateSongModal from "./UpdateSongModal";
 
@@ -48,6 +48,7 @@ const SongList = () => {
     const handleDeleteSong = async (songId: string) => {
         try {
             const response = await axios.delete(`http://localhost:3001/api/songs/${songId}`);
+            dispatchFetchSongs(dispatch);
             dispatch(removeSong(response.data));
             setSongToDelete('');
         } catch (error) {
@@ -71,8 +72,8 @@ const SongList = () => {
                 <TableHeader>Genre</TableHeader>
                 <TableHeader>Album</TableHeader>
                 </TableRow>
-                {songs.map((song) => (
-                    <TableRow key={song._id}>
+                {songs.map((song, index) => (
+                    <TableRow key={index}>
                         <TableData>{song.title}</TableData>
                         <TableData>{song.artist}</TableData>
                         <TableData>{song.genre}</TableData>
@@ -98,3 +99,12 @@ const SongList = () => {
         }
 
         export default SongList;
+        const dispatchFetchSongs = async (dispatch: Dispatch<AnyAction>) => {
+            try {
+              const response = await axios.get('http://localhost:3001/api/songs');
+              dispatch(setSongs(response.data));
+            } catch (error) {
+              console.error(error);
+            }
+          };
+

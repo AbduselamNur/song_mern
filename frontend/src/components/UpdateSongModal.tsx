@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateSong } from '../redux/songsSlice';
+import { setSongs, updateSong } from '../redux/songsSlice';
 import { Modal, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Input, StyledButton } from './StyledComponents';
 import axios from 'axios';
+import { Dispatch, AnyAction } from '@reduxjs/toolkit';
 
 interface UpdateSongModalProps {
   isOpen: boolean;
@@ -21,12 +22,9 @@ const UpdateSongModal: React.FC<UpdateSongModalProps> = ({ isOpen, onClose, song
   const [updatedSong, setUpdatedSong] = useState({ ...song });
 
   useEffect(() => {
-    if (!song) {
-        onClose();
-    } else {
     setUpdatedSong({ ...song });
-    }
   }, [song]);
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof typeof updatedSong) => {
     setUpdatedSong({ ...updatedSong, [field]: e.target.value });
@@ -34,11 +32,13 @@ const UpdateSongModal: React.FC<UpdateSongModalProps> = ({ isOpen, onClose, song
 
   const handleUpdateSong = async () => {
     try {
-        const response = axios.put(`http://localhost:3001/api/songs/${song._id}`, updatedSong);
+        const response = await axios.put(`http://localhost:3001/api/songs/${song._id}`, updatedSong);
+        dispatchFetchSongs(dispatch);
         dispatch(updateSong((await response).data));
-        onClose();
     } catch (error) {
         console.error(error);
+    } finally {
+      onClose();
     }
   };
 
@@ -69,3 +69,11 @@ const UpdateSongModal: React.FC<UpdateSongModalProps> = ({ isOpen, onClose, song
 };
 
 export default UpdateSongModal;
+const dispatchFetchSongs = async (dispatch: Dispatch<AnyAction>) => {
+  try {
+    const response = await axios.get('http://localhost:3001/api/songs');
+    dispatch(setSongs(response.data));
+  } catch (error) {
+    console.error(error);
+  }
+};
