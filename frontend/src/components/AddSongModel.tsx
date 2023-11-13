@@ -1,4 +1,3 @@
-// src/components/AddSongModal.tsx
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addSong } from '../redux/songsSlice';
@@ -36,8 +35,9 @@ const AddSongModal: React.FC<AddSongModalProps> = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalContent>
-        <ModalHeader>Add New Song</ModalHeader>
-        <ModalCloseButton onClick={onClose} />
+        <ModalHeader>Add New Song
+        <ModalCloseButton onClick={onClose}>&times;</ModalCloseButton>
+        </ModalHeader>
         <ModalBody>
           <label>Title:</label>
           <Input type="text" value={newSong.title} onChange={(e) => handleInputChange(e, 'title')} />

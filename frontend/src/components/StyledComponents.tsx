@@ -70,6 +70,7 @@ export const ModalCloseButton = styled.span`
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+  line-height: 20px;
 
   &:hover {
     color: black;
@@ -151,4 +152,3 @@ export const DeleteConfirmationButton = styled.button`
   }
 `;
 
-// Add other styled components as needed

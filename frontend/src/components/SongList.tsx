@@ -7,6 +7,7 @@ import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 import AddSongModal from "./AddSongModel";
 import { removeSong } from "../redux/songsSlice";
 import axios from 'axios';
+import UpdateSongModal from "./UpdateSongModal";
 
 
 const SongList = () => {
@@ -19,9 +20,12 @@ const SongList = () => {
     };
         dispatchFetchSongs(dispatch);
     }, [dispatch]);
+
     console.log(songs);
     const [isAddSongModalOpen, setAddSongModalOpen] = useState(false);
     const [songToDelete, setSongToDelete] = useState('' as string);
+    const [isUpdateSongModalOpen, setUpdateSongModalOpen] = useState(false);
+    const [selectedSong, setSelectedSong] = useState({} as any);
 
     const handleAddSongModalOpen = () => {
       setAddSongModalOpen(true);
@@ -30,6 +34,16 @@ const SongList = () => {
     const handleAddSongModalClose = () => {
       setAddSongModalOpen(false);
     };
+
+    const handleUpdateSongModalOpen = (song: any) => {
+        setSelectedSong(song);
+        setUpdateSongModalOpen(true);
+        }
+    
+    const handleUpdateSongModalClose = () => {
+        setUpdateSongModalOpen(false);
+        };
+
 
     const handleDeleteSong = async (songId: string) => {
         try {
@@ -44,7 +58,7 @@ const SongList = () => {
     const handleDeleteIconClick = (songId: string) => {
         setSongToDelete(songId);
     };
-        
+   
 
     return (
         <div>
@@ -64,12 +78,14 @@ const SongList = () => {
                         <TableData>{song.genre}</TableData>
                         <TableData>{song.album}</TableData>
                         <TableData>
+                            <StyledButton onClick={() => handleUpdateSongModalOpen(song)}>Edit</StyledButton>
                             <DeleteButton onClick={() => handleDeleteSong(song._id || '')}>Delete</DeleteButton>
                         </TableData>
                     </TableRow>
                 ))}
         </Table>
         <AddSongModal isOpen={isAddSongModalOpen} onClose={handleAddSongModalClose} />
+        <UpdateSongModal isOpen={isUpdateSongModalOpen} onClose={handleUpdateSongModalClose} song={selectedSong} />
         {/* {songToDelete && (
         <div>
           <p>Are you sure you want to delete the song "{songToDelete}"?</p>
