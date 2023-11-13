@@ -34,6 +34,7 @@ export const StyledButton = styled.button`
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
+  ;
 
   &:hover {
     background-color: #45a049;
@@ -175,10 +176,24 @@ export const SidebarLink = styled(Link)`
   display: block;
   padding: 10px;
   color: white;
+  padding-top: 50px;
+  padding-bottom: 40px;
   text-decoration: none;
+  text-align: center;
+  background-color: #333;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-family: 'Arial', sans-serif; 
 
   &:hover {
     background-color: #555;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    background-color: lightblue;
+    transform: scale(1.05);
+    text-decoration: solid;
   }
 `;
 
