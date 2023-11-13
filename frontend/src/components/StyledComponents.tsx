@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
-  margin-left: 10%;
-  margin-top: 15%;
 `;
 
 export const TableRow = styled.tr`
@@ -30,6 +28,7 @@ export const StyledButton = styled.button`
   ${typography}
   cursor: pointer;
   background-color: #4caf50;
+  margin-left: 20px;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -103,9 +102,10 @@ export const DeleteButton = styled.button`
   cursor: pointer;
   background-color: #f44336;
   color: white;
-  padding: 8px;
+  padding: 9px;
   border: none;
   border-radius: 5px;
+  margin-left: 20px;
 
   &:hover {
     background-color: #d32f2f;
@@ -198,6 +198,7 @@ export const SidebarLink = styled(Link)`
 `;
 
 export const ContentContainer = styled.div`
-  margin-left: 200px; 
-  padding: 16px;
+  margin-left: 25%;
+  margin-top: 20%; 
+  width: 70%;
 `;

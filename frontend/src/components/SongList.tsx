@@ -67,7 +67,7 @@ const SongList = () => {
         <div>
             <Sidebar />
             <ContentContainer>
-        <h1>Songs</h1>
+        {/* <h1>Songs</h1> */}
         <FlexContainer>
         <StyledButton onClick={handleAddSongModalOpen}>Add Song</StyledButton>
         </FlexContainer>
