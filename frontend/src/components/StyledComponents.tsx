@@ -37,6 +37,7 @@ export const StyledButton = styled.button`
 
   &:hover {
     background-color: #45a049;
+    transform: scale(1.05);
   }
 `;
 
@@ -109,6 +110,7 @@ export const DeleteButton = styled.button`
 
   &:hover {
     background-color: #d32f2f;
+    transform: scale(1.05);
   }
 `;
 
@@ -120,6 +122,7 @@ export const DeleteConfirmationModal = styled.div<{ isOpen: boolean }>`
   top: 0;
   width: 100%;
   height: 100%;
+  border: 1px solid #888;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 `;
@@ -128,7 +131,6 @@ export const DeleteConfirmationContent = styled.div`
   background-color: #fefefe;
   margin: 10% auto;
   padding: 20px;
-  border: 1px solid #888;
   width: 40%;
   text-align: center;
 `;
