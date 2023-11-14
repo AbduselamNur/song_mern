@@ -15,6 +15,8 @@ import UpdateSongModal from "./UpdateSongModal";
 import GenreStatistics from './GenreStatistics';
 import AlbumStatistics from './AlbumStatistics';
 import ArtistStatistics from "./ArtistStatistics";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SongList = () => {
     const location = useLocation();
@@ -54,11 +56,14 @@ const SongList = () => {
     const handleDeleteSong = async (songId: string) => {
         try {
             const response = await axios.delete(`http://localhost:3001/api/songs/${songId}`);
+            toast.success('Song deleted successfully');
             dispatchFetchSongs(dispatch);
             dispatch(removeSong(response.data));
             setSongToDelete('');
         } catch (error) {
             console.error(error);
+            toast.error('Failed to delete song');
+
         }
     };
 
@@ -130,4 +135,3 @@ const SongList = () => {
               console.error(error);
             }
           };
-
