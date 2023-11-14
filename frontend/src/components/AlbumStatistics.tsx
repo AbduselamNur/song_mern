@@ -1,25 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import styled from '@emotion/styled';
 import {CardContainer, Card} from './StyledComponents'
 
 interface AlbumStatisticsProps {
   apiUrl: string;
 }
-
-// const Container = styled.div`
-//   display: flex;
-//   overflow-x: auto;
-//   padding: 16px;
-// `;
-
-// const Card = styled.div`
-//   flex: 0 0 auto;
-//   margin-right: 16px;
-//   padding: 16px;
-//   background-color: #f2f2f2;
-//   border-radius: 8px;
-// `;
 
 const AlbumStatistics: React.FC<AlbumStatisticsProps> = ({ apiUrl }) => {
   const [albumData, setAlbumData] = useState<any[]>([]);
