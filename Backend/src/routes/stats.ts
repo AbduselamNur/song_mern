@@ -3,13 +3,21 @@ import Song from '../models/song';
 
 const router = express.Router();
 
-// Overall statistics
 router.get('/statistics', async (req: Request, res: Response) => {
   try {
     const totalSongs = await Song.countDocuments();
-    const totalArtists = await Song.distinct('artist').countDocuments();
-    const totalAlbums = await Song.distinct('album').countDocuments();
-    const totalGenres = await Song.distinct('genre').countDocuments();
+    const totalArtists = await Song.aggregate([
+      { $group: { _id: '$artist' } },
+      { $group: { _id: null, count: { $sum: 1 } } },
+    ]).exec().then(data => data[0].count);
+    const totalAlbums = await Song.aggregate([
+      { $group: { _id: '$album' } },
+      { $group: { _id: null, count: { $sum: 1 } } },
+    ]).exec().then(data => data[0].count);
+    const totalGenres = await Song.aggregate([
+      { $group: { _id: '$genre' } },
+      { $group: { _id: null, count: { $sum: 1 } } },
+    ]).exec().then(data => data[0].count);
 
     const genreCounts = await Song.aggregate([
       { $group: { _id: '$genre', count: { $sum: 1 } } },
