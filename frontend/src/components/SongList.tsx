@@ -9,10 +9,13 @@ import AddSongModal from "./AddSongModel";
 import { removeSong, setSongs } from "../redux/songsSlice";
 import axios from 'axios';
 import Sidebar from "./SideBar";
+import { useLocation } from "react-router-dom";
+import StatisticsCard from "./StatisticsCard";
 import UpdateSongModal from "./UpdateSongModal";
 
 
 const SongList = () => {
+    const location = useLocation();
     const dispatch = useDispatch();
     const songs = useSelector((state: RootState) => state.songs);
     React.useEffect(() => {
@@ -61,12 +64,24 @@ const SongList = () => {
     const handleDeleteIconClick = (songId: string) => {
         setSongToDelete(songId);
     };
+    
+    const shouldRenderStatisticsCard = location.pathname === '/';
+
+
    
 
     return (
         <div>
             <Sidebar />
+            
+
             <ContentContainer>
+            {shouldRenderStatisticsCard && (
+          <>
+            <h1>Songs</h1>
+            <StatisticsCard apiUrl="http://127.0.0.1:3001/api/statistics/" title="Overall Statistics:" />
+          </>
+        )}
         {/* <h1>Songs</h1> */}
         <FlexContainer>
         <StyledButton onClick={handleAddSongModalOpen}>Add Song</StyledButton>

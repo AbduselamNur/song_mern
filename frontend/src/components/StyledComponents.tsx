@@ -67,6 +67,7 @@ export const ModalHeader = styled.div`
   color: white;
 `;
 
+
 export const ModalCloseButton = styled.span`
   color: #aaa;
   float: right;
@@ -112,9 +113,9 @@ export const DeleteButton = styled.button`
     background-color: #d32f2f;
     transform: scale(1.05);
   }
-`;
-
-export const DeleteConfirmationModal = styled.div<{ isOpen: boolean }>`
+  `;
+  
+  export const DeleteConfirmationModal = styled.div<{ isOpen: boolean }>`
   display: ${(props) => (props.isOpen ? 'block' : 'none')};
   position: fixed;
   z-index: 1;
@@ -151,7 +152,7 @@ export const DeleteConfirmationButton = styled.button`
   padding: 8px;
   border: none;
   border-radius: 5px;
-
+  
   &:hover {
     background-color: #d32f2f;
   }
@@ -200,7 +201,38 @@ export const SidebarLink = styled(Link)`
 `;
 
 export const ContentContainer = styled.div`
-  margin-left: 25%;
-  margin-top: 20%; 
+margin-left: 25%;
+// margin-top: 20%; 
   width: 70%;
+`;
+export const CardContainer = styled.div`
+  display: flex;
+  overflow-x: auto;
+  padding: 16px;
+`;
+
+export const Card = styled.div`
+  flex: 0 0 auto;
+  margin-right: 16px;
+  padding: 16px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
+  transition: 0.3s;
+  width: 300px; 
+  height: 200px;
+
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+`;
+
+export const StyledParagraph = styled.p`
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  padding-left: 25px;
 `;
