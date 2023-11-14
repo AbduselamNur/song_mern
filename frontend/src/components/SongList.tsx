@@ -30,7 +30,6 @@ const SongList = () => {
         dispatchFetchSongs(dispatch);
     }, [dispatch]);
 
-    console.log(songs);
     const [isAddSongModalOpen, setAddSongModalOpen] = useState(false);
     const [songToDelete, setSongToDelete] = useState('' as string);
     const [isUpdateSongModalOpen, setUpdateSongModalOpen] = useState(false);
@@ -66,10 +65,6 @@ const SongList = () => {
 
         }
     };
-
-    const handleDeleteIconClick = (songId: string) => {
-        setSongToDelete(songId);
-    };
     
     const shouldRenderStatisticsCard = location.pathname === '/';
     const shouldRenderGenreStatistics = location.pathname === '/genre';
@@ -92,7 +87,7 @@ const SongList = () => {
             <FlexContainer>
                 <StyledButton onClick={handleAddSongModalOpen}>Add Song</StyledButton>
             </FlexContainer>
-        <Table>
+            <Table>
             <TableRow>
                 <TableHeader>Title</TableHeader>
                 <TableHeader>Artist</TableHeader>
@@ -111,27 +106,21 @@ const SongList = () => {
                         </TableData>
                     </TableRow>
                 ))}
-        </Table>
-        <AddSongModal isOpen={isAddSongModalOpen} onClose={handleAddSongModalClose} />
-        <UpdateSongModal isOpen={isUpdateSongModalOpen} onClose={handleUpdateSongModalClose} song={selectedSong} />
-        {/* {songToDelete && (
-            <div>
-            <p>Are you sure you want to delete the song "{songToDelete}"?</p>
-            <StyledButton onClick={handleDeleteSong}>Yes</StyledButton>
-            <StyledButton onClick={() => setSongToDelete('')}>No</StyledButton>
-            </div>
-        )} */}
+            </Table>
+            <AddSongModal isOpen={isAddSongModalOpen} onClose={handleAddSongModalClose} />
+            <UpdateSongModal isOpen={isUpdateSongModalOpen} onClose={handleUpdateSongModalClose} song={selectedSong} />
         </ContentContainer>
-                        </div>
-                )
-        }
+        </div>
+        )
+}
 
-        export default SongList;
-        const dispatchFetchSongs = async (dispatch: Dispatch<AnyAction>) => {
-            try {
-              const response = await axios.get('http://localhost:3001/api/songs');
-              dispatch(setSongs(response.data));
-            } catch (error) {
-              console.error(error);
-            }
-          };
+        
+const dispatchFetchSongs = async (dispatch: Dispatch<AnyAction>) => {
+try {
+    const response = await axios.get('http://localhost:3001/api/songs');
+    dispatch(setSongs(response.data));
+    } catch (error) {
+    console.error(error);
+    }
+};
+export default SongList;
