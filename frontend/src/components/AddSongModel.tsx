@@ -1,4 +1,3 @@
-// AddSongModal.tsx
 import React, { Dispatch, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addSong, setSongs } from '../redux/songsSlice';
@@ -40,7 +39,7 @@ const AddSongModal: React.FC<AddSongModalProps> = ({ isOpen, onClose }) => {
     }
 
     try {
-      setIsAddingSong(true); // Disable the button
+      setIsAddingSong(true);
       const response = await axios.post('http://localhost:3001/api/songs', newSong);
       dispatchFetchSongs(dispatch);
       dispatch(addSong(response.data));
@@ -51,7 +50,7 @@ const AddSongModal: React.FC<AddSongModalProps> = ({ isOpen, onClose }) => {
       console.error(error);
       toast.error('Failed to add song');
     } finally {
-      setIsAddingSong(false); // Enable the button after completion
+      setIsAddingSong(false);
     }
   };
 
