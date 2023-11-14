@@ -1,10 +1,10 @@
 import React, { Dispatch, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addSong, setSongs } from '../redux/songsSlice';
-import { Modal, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Input, StyledButton } from './StyledComponents';
+import { Modal, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Input, StyledButton, ErrorMessage, SuccessMessage } from './StyledComponents';
 import axios from 'axios';
 import { AnyAction } from '@reduxjs/toolkit';
-
+import { toast } from 'react-toastify';
 
 interface AddSongModalProps {
   isOpen: boolean;
@@ -14,32 +14,38 @@ interface AddSongModalProps {
 const AddSongModal: React.FC<AddSongModalProps> = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
   const [newSong, setNewSong] = useState({ title: '', artist: '', album: '', genre: '' });
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof typeof newSong) => {
     setNewSong({ ...newSong, [field]: e.target.value });
   };
 
   const handleAddSong = async () => {
-    // dispatch(addSong(newSong));
-    // onClose();
+    if (!newSong.title || !newSong.artist || !newSong.album || !newSong.genre) {
+      toast.error('All fields are required'); 
+      return;
+    }
+  
     try {
-        const response = await axios.post('http://localhost:3001/api/songs', newSong);
-        dispatchFetchSongs(dispatch);
-        dispatch(addSong(response.data));
-        setNewSong({ title: '', artist: '', album: '', genre: '' });
-        onClose();
+      const response = await axios.post('http://localhost:3001/api/songs', newSong);
+      dispatchFetchSongs(dispatch);
+      dispatch(addSong(response.data));
+      setNewSong({ title: '', artist: '', album: '', genre: '' });
+      onClose();
+      toast.success('Song added successfully');
     } catch (error) {
-        console.error(error);
+      console.error(error);
+      toast.error('Failed to add song');
     }
   };
-
-  
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalContent>
-        <ModalHeader>Add New Song
-        <ModalCloseButton onClick={onClose}>&times;</ModalCloseButton>
+        <ModalHeader>
+          Add New Song
+          <ModalCloseButton onClick={onClose}>&times;</ModalCloseButton>
         </ModalHeader>
         <ModalBody>
           <label>Title:</label>
@@ -55,12 +61,14 @@ const AddSongModal: React.FC<AddSongModalProps> = ({ isOpen, onClose }) => {
           <Input type="text" value={newSong.genre} onChange={(e) => handleInputChange(e, 'genre')} />
 
           <StyledButton onClick={handleAddSong}>Add Song</StyledButton>
+
+          {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+          {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
         </ModalBody>
       </ModalContent>
     </Modal>
   );
 };
-
 
 export default AddSongModal;
 

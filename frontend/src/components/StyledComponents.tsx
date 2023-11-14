@@ -236,3 +236,13 @@ export const StyledParagraph = styled.p`
   font-weight: bold;
   padding-left: 25px;
 `;
+
+export const ErrorMessage = styled.div`
+  color: red;
+  margin-top: 8px;
+`;
+
+export const SuccessMessage = styled.div`
+  color: green;
+  margin-top: 8px;
+`;
