@@ -1,9 +1,7 @@
-// src/components/StatisticsCard.tsx
 import React, { Dispatch, useEffect, useState } from 'react';
 import axios from 'axios';
 import { CardContainer, Card, StyledParagraph } from './StyledComponents';
 import { dispatch } from '../redux/store';
-
 
 interface StatisticsCardProps {
   apiUrl: string;

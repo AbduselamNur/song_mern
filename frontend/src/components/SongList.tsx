@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from '../redux/rootReducer';
 import { fetchSongs } from "../services/songService";
 import { Table, TableRow, TableHeader, TableData, StyledButton,
-    DeleteButton, FlexContainer, ContentContainer } from './StyledComponents';
+         DeleteButton, FlexContainer, ContentContainer } from './StyledComponents';
 import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 import AddSongModal from "./AddSongModel";
 import { removeSong, setSongs } from "../redux/songsSlice";
@@ -41,14 +41,13 @@ const SongList = () => {
     };
 
     const handleUpdateSongModalOpen = (song: any) => {
-        setSelectedSong(song);
-        setUpdateSongModalOpen(true);
-        }
+      setSelectedSong(song);
+      setUpdateSongModalOpen(true);
+    }
     
     const handleUpdateSongModalClose = () => {
         setUpdateSongModalOpen(false);
-        };
-
+    };
 
     const handleDeleteSong = async (songId: string) => {
         try {
@@ -72,22 +71,14 @@ const SongList = () => {
     return (
         <div>
             <Sidebar />
-            
-
             <ContentContainer>
-            {shouldRenderStatisticsCard && (
-                <>
-                <h1>Songs</h1>
-                <StatisticsCard apiUrl="http://127.0.0.1:3001/api/statistics/" title="Overall Statistics:" />
-                </>)}
-                {shouldRenderGenreStatistics && (
-                <>
-                <h1>Genres</h1>
-                <GenreStatistics apiUrl="http://127.0.0.1:3001/api/statistics/" />
-                </>)}
-        <FlexContainer>
-        <StyledButton onClick={handleAddSongModalOpen}>Add Song</StyledButton>
-        </FlexContainer>
+            {shouldRenderStatisticsCard && (<><h1>Songs</h1>
+                <StatisticsCard apiUrl="http://127.0.0.1:3001/api/statistics/" title="Overall Statistics:" /></>)}
+            {shouldRenderGenreStatistics && (<><h1>Genres</h1>
+                <GenreStatistics apiUrl="http://127.0.0.1:3001/api/statistics/" /></>)}
+            <FlexContainer>
+                <StyledButton onClick={handleAddSongModalOpen}>Add Song</StyledButton>
+            </FlexContainer>
         <Table>
             <TableRow>
                 <TableHeader>Title</TableHeader>
