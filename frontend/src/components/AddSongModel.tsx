@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { Dispatch, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addSong } from '../redux/songsSlice';
+import { addSong, setSongs } from '../redux/songsSlice';
 import { Modal, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Input, StyledButton } from './StyledComponents';
 import axios from 'axios';
+import { AnyAction } from '@reduxjs/toolkit';
 
 
 interface AddSongModalProps {
@@ -23,6 +24,7 @@ const AddSongModal: React.FC<AddSongModalProps> = ({ isOpen, onClose }) => {
     // onClose();
     try {
         const response = await axios.post('http://localhost:3001/api/songs', newSong);
+        dispatchFetchSongs(dispatch);
         dispatch(addSong(response.data));
         setNewSong({ title: '', artist: '', album: '', genre: '' });
         onClose();
@@ -59,4 +61,14 @@ const AddSongModal: React.FC<AddSongModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
+
 export default AddSongModal;
+
+const dispatchFetchSongs = async (dispatch: Dispatch<AnyAction>) => {
+  try {
+    const response = await axios.get('http://localhost:3001/api/songs');
+    dispatch(setSongs(response.data));
+  } catch (error) {
+    console.error(error);
+  }
+};

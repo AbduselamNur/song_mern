@@ -1,7 +1,9 @@
 // src/components/StatisticsCard.tsx
-import React, { useEffect, useState } from 'react';
+import React, { Dispatch, useEffect, useState } from 'react';
 import axios from 'axios';
 import { CardContainer, Card, StyledParagraph } from './StyledComponents';
+import { dispatch } from '../redux/store';
+
 
 interface StatisticsCardProps {
   apiUrl: string;
@@ -22,7 +24,11 @@ const StatisticsCard: React.FC<StatisticsCardProps> = ({ apiUrl, title }) => {
     };
 
     fetchData();
-  }, [apiUrl]);
+    const intervalId = setInterval(fetchData, 5000);
+    return () => {
+        clearInterval(intervalId)
+    }
+  }, [apiUrl, dispatch]);
 
   return (
     <CardContainer>
