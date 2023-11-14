@@ -31,7 +31,7 @@ const AddSongModal: React.FC<AddSongModalProps> = ({ isOpen, onClose }) => {
   };
 
   const handleAddSong = async () => {
-    if (isAddingSong) return; // Prevent multiple clicks while adding
+    if (isAddingSong) return;
 
     if (!newSong.title || !newSong.artist || !newSong.album || !newSong.genre) {
       toast.error('All fields are required');

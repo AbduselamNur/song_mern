@@ -25,8 +25,13 @@ const songsSlice = createSlice({
             state.splice(action.payload, 1);
         },
         updateSong(state, action: PayloadAction<{ index: number; song: Song }>) {
-            state[action.payload.index] = action.payload.song;
-        },
+            const { index, song } = action.payload;
+            if (Number.isInteger(index) && index >= 0 && index < state.length) {
+              state[index] = song;
+            } else {
+              console.error(`Invalid index: ${index}`);
+            }
+          },
     },
 });
 
