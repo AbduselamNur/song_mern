@@ -13,6 +13,7 @@ import { useLocation } from "react-router-dom";
 import StatisticsCard from "./StatisticsCard";
 import UpdateSongModal from "./UpdateSongModal";
 import GenreStatistics from './GenreStatistics';
+import AlbumStatistics from './AlbumStatistics'
 
 const SongList = () => {
     const location = useLocation();
@@ -66,6 +67,7 @@ const SongList = () => {
     
     const shouldRenderStatisticsCard = location.pathname === '/';
     const shouldRenderGenreStatistics = location.pathname === '/genre';
+    const shouldRenderAlbumStatistics = location.pathname === '/album';
    
 
     return (
@@ -76,6 +78,8 @@ const SongList = () => {
                 <StatisticsCard apiUrl="http://127.0.0.1:3001/api/statistics/" title="Overall Statistics:" /></>)}
             {shouldRenderGenreStatistics && (<><h1>Genres</h1>
                 <GenreStatistics apiUrl="http://127.0.0.1:3001/api/statistics/" /></>)}
+            {shouldRenderAlbumStatistics && (<><h1>Album</h1>
+                <AlbumStatistics apiUrl="http://127.0.0.1:3001/api/statistics" /></>)}
             <FlexContainer>
                 <StyledButton onClick={handleAddSongModalOpen}>Add Song</StyledButton>
             </FlexContainer>
