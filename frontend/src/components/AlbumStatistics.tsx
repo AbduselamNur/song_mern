@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {CardContainer, Card} from './StyledComponents'
+import {CardContainer, Card, StyledParagraph} from './StyledComponents'
 
 interface AlbumStatisticsProps {
   apiUrl: string;
@@ -31,7 +31,7 @@ const AlbumStatistics: React.FC<AlbumStatisticsProps> = ({ apiUrl }) => {
       {albumData.map((album) => (
         <Card key={album._id}>
           <h2>{album._id}</h2>
-          <p>Total Songs: {album.totalSongs}</p>
+          <StyledParagraph>Total Songs: {album.totalSongs}</StyledParagraph>
         </Card>
       ))}
     </CardContainer>

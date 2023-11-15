@@ -1,7 +1,7 @@
 // src/components/ArtistStatistics.tsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {CardContainer, Card} from './StyledComponents'
+import {CardContainer, Card, StyledParagraph} from './StyledComponents'
 
 interface ArtistStatisticsProps {
   apiUrl: string;
@@ -32,8 +32,8 @@ const ArtistStatistics: React.FC<ArtistStatisticsProps> = ({ apiUrl }) => {
       {artistData.map((artist) => (
         <Card key={artist._id}>
           <h3>{artist._id}</h3>
-          <p>Total Albums: {artist.totalAlbums}</p>
-          <p>Total Songs: {artist.totalSongs}</p>
+          <StyledParagraph>Total Albums: {artist.totalAlbums}</StyledParagraph>
+          <StyledParagraph>Total Songs: {artist.totalSongs}</StyledParagraph>
         </Card>
       ))}
     </CardContainer>

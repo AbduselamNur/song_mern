@@ -1,6 +1,6 @@
 import React, { Dispatch, useEffect, useState } from 'react';
 import axios from 'axios';
-import { CardContainer, Card, StyledParagraph } from './StyledComponents';
+import { CardContainer, SongCard, StyledParagraph } from './StyledComponents';
 import { dispatch } from '../redux/store';
 
 interface StatisticsCardProps {
@@ -30,7 +30,7 @@ const StatisticsCard: React.FC<StatisticsCardProps> = ({ apiUrl, title }) => {
 
   return (
     <CardContainer>
-      <Card>
+      <SongCard>
         <h2>{title}</h2>
         {data ? (
           <div>
@@ -42,7 +42,7 @@ const StatisticsCard: React.FC<StatisticsCardProps> = ({ apiUrl, title }) => {
         ) : (
           <p>Loading...</p>
         )}
-      </Card>
+      </SongCard>
     </CardContainer>
   );
 };

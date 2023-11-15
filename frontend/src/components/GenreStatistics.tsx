@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {CardContainer, Card} from './StyledComponents'
+import {CardContainer, Card, StyledParagraph} from './StyledComponents'
 
 interface GenreStatisticsProps {
   apiUrl: string;
@@ -31,7 +31,7 @@ const GenreStatistics: React.FC<GenreStatisticsProps> = ({ apiUrl }) => {
       {genreData.map((genre) => (
         <Card key={genre._id}>
           <h2>{genre._id}</h2>
-          <p>Total Songs: {genre.count}</p>
+          <StyledParagraph>Total Songs: {genre.count}</StyledParagraph>
         </Card>
       ))}
     </CardContainer>

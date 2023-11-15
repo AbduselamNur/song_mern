@@ -5,10 +5,14 @@ import { Link } from 'react-router-dom';
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
+  border: 1px solid #ddd;
 `;
 
 export const TableRow = styled.tr`
   border-bottom: 1px solid #ddd;
+  &:hover {
+    background-color: #f5f5f5;
+  }
 `;
 
 export const TableHeader = styled.th`
@@ -19,6 +23,7 @@ export const TableHeader = styled.th`
 
 export const TableData = styled.td`
   padding: 12px;
+  // width: 10%;
 `;
 
 export const StyledButton = styled.button`
@@ -108,6 +113,7 @@ export const DeleteButton = styled.button`
   border: none;
   border-radius: 5px;
   margin-left: 20px;
+  margin-right: 20px;
 
   &:hover {
     background-color: #d32f2f;
@@ -115,54 +121,12 @@ export const DeleteButton = styled.button`
   }
   `;
   
-  export const DeleteConfirmationModal = styled.div<{ isOpen: boolean }>`
-  display: ${(props) => (props.isOpen ? 'block' : 'none')};
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border: 1px solid #888;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-`;
-
-export const DeleteConfirmationContent = styled.div`
-  background-color: #fefefe;
-  margin: 10% auto;
-  padding: 20px;
-  width: 40%;
-  text-align: center;
-`;
-
-export const DeleteConfirmationText = styled.p`
-  font-size: 18px;
-  margin-bottom: 20px;
-`;
-
-export const DeleteConfirmationButton = styled.button`
-  ${space}
-  ${layout}
-  ${color}
-  ${typography}
-  cursor: pointer;
-  background-color: #f44336;
-  color: white;
-  padding: 8px;
-  border: none;
-  border-radius: 5px;
-  
-  &:hover {
-    background-color: #d32f2f;
-  }
-`;
 
 export const FlexContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-bottom: 30px;
-  margin-right: 10px;
+  margin-right: 15%;
 `;
 
 export const SidebarContainer = styled.div`
@@ -201,17 +165,23 @@ export const SidebarLink = styled(Link)`
 `;
 
 export const ContentContainer = styled.div`
-margin-left: 25%;
-// margin-top: 20%; 
-  width: 70%;
+  margin-left: 300px;
+  width: 75%;
+  align-items: center;
+  @media (max-width: 1040px) {
+    margin-left: 200px;
+    margin-right: 50px;
+  }
 `;
+
 export const CardContainer = styled.div`
   display: flex;
   overflow-x: auto;
-  padding: 16px;
+  padding: 30px;
+  margin-bottom: 30px;
 `;
 
-export const Card = styled.div`
+export const SongCard = styled.div`
   flex: 0 0 auto;
   margin-right: 16px;
   padding: 16px;
@@ -227,6 +197,23 @@ export const Card = styled.div`
   }
 `;
 
+export const Card = styled.div`
+  flex: 0 0 auto;
+  margin-right: 16px;
+  margin-left: 16px;
+  padding: 16px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
+  transition: 0.3s;
+  width: 150px; 
+  height: 150px;
+
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+`;
+
 export const StyledParagraph = styled.p`
   color: #333;
   font-size: 16px;
@@ -235,14 +222,4 @@ export const StyledParagraph = styled.p`
   font-family: 'Arial', sans-serif;
   font-weight: bold;
   padding-left: 25px;
-`;
-
-export const ErrorMessage = styled.div`
-  color: red;
-  margin-top: 8px;
-`;
-
-export const SuccessMessage = styled.div`
-  color: green;
-  margin-top: 8px;
 `;
