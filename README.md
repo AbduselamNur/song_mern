@@ -1,1 +1,49 @@
-# song_mern
+## MERN Song App
+This is a full stack web application that lets you manage information for songs. You can create, list, update and remove songs, as well as view some statistics about them. The app is built using the MERN (MongoDB, ExpressJS, ReactJS & NodeJS) stack.
+
+## Installation and Usage
+To install and run the project locally, you need to have Node.js, npm, and Docker installed on your machine. Then, follow these steps:
+
+Clone this repository to your local machine using git clone
+`https://github.com/AbduselamNur/song_mern`
+
+Navigate to the project folder using cd mern-song-app.
+
+Install the dependencies for the backend and the frontend using `npm install` in both the backend and the frontend folders.
+
+Build the Docker image for the backend using `docker build -t backend-app` . in the backend folder.
+
+Run the Docker container for the backend using `docker run -p 3001:3001 backend-app` in the backend folder.
+
+Run the frontend application using npm start in the frontend folder.
+
+Open your browser and go to http://localhost:3000 to see the app in action.
+
+### Technologies and Tools
+This project uses the following technologies and tools:
+
+Name	Link	Description
+MongoDB	[https://www.mongodb.com/]	A NoSQL database to store the song data.
+ExpressJS	[https://expressjs.com/]	A web framework to handle the requests and responses for the backend.
+ReactJS	[https://reactjs.org/]	A library to build the user interface for the frontend.
+Node.js	[https://nodejs.org/]	A runtime environment to run JavaScript code on the server.
+Mongoose	[https://mongoosejs.com/]	An ORM to interact with MongoDB, model the data and create the schema.
+Docker	[https://www.docker.com/]	A platform to package the backend application using containers.
+TypeScript	[https://www.typescriptlang.org/]	A superset of JavaScript that adds static typing and other features.
+Redux Toolkit	[https://redux-toolkit.js.org/]	A toolkit to manage the state of the frontend application.
+Redux-Saga	[https://redux-saga.js.org/]	A middleware to make calls to the backend API from the frontend.
+Emotion	[https://emotion.sh/]	A library to style the frontend components using CSS-in-JS.
+Styled System	[https://styled-system.com/]	A collection of functions to create responsive and themeable design systems.
+Finally, provide some information about the features and functionalities of the project. You can use headings, subheadings, paragraphs, images, or gifs to describe the features and functionalities. You can also include some code snippets or examples to show how the project works. For example, you can write:
+
+## Features and Functionalities
+This project has the following features and functionalities:
+
+- Song List
+The song list shows all the songs that are stored in the database. You can see the title, artist, album, and genre of each song. You can also sort the songs by any of these fields by clicking on the table headers. You can also search for a specific song by typing in the search box.
+
+- Song Form
+The song form lets you create a new song or update an existing song. You can enter the title, artist, album, and genre of the song. You can also select a color for the song from a color picker. The form validates the input and shows an error message if any field is empty or invalid.
+
+- Song Statistics
+The song statistics shows some data about the songs in the database. You can see the total number of songs, artists, albums, and genres. You can also see the number of songs in each genre, the number of songs and albums for each artist, and the number of songs in each album. You can also see a pie chart and a bar chart that visualize the data.
