@@ -23,7 +23,9 @@ export const TableHeader = styled.th`
 
 export const TableData = styled.td`
   padding: 12px;
-  // width: 10%;
+  @media (min-width: 1110px) {
+    width: 10%;
+  }
 `;
 
 export const StyledButton = styled.button`
@@ -168,7 +170,7 @@ export const ContentContainer = styled.div`
   margin-left: 300px;
   width: 75%;
   align-items: center;
-  @media (max-width: 1040px) {
+  @media (max-width: 850px) {
     margin-left: 200px;
     margin-right: 50px;
   }
