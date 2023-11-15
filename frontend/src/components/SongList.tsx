@@ -54,7 +54,7 @@ const SongList = () => {
 
     const handleDeleteSong = async (songId: string) => {
         try {
-            const response = await axios.delete(`http://localhost:3001/api/songs/${songId}`);
+            const response = await axios.delete(`https://api-ytej.onrender.com/api/songs/${songId}`);
             toast.success('Song deleted successfully');
             dispatchFetchSongs(dispatch);
             dispatch(removeSong(response.data));
@@ -77,13 +77,13 @@ const SongList = () => {
             <Sidebar />
             <ContentContainer>
             {shouldRenderStatisticsCard && (<><h1>Songs</h1>
-                <StatisticsCard apiUrl="http://127.0.0.1:3001/api/statistics/" title="Overall Statistics:" /></>)}
+                <StatisticsCard apiUrl="https://api-ytej.onrender.com/api/statistics/" title="Overall Statistics:" /></>)}
             {shouldRenderGenreStatistics && (<><h1>Genres</h1>
-                <GenreStatistics apiUrl="http://127.0.0.1:3001/api/statistics/" /></>)}
+                <GenreStatistics apiUrl="https://api-ytej.onrender.com/api/statistics/" /></>)}
             {shouldRenderAlbumStatistics && (<><h1>Album</h1>
-                <AlbumStatistics apiUrl="http://127.0.0.1:3001/api/statistics" /></>)}
+                <AlbumStatistics apiUrl="https://api-ytej.onrender.com/api/statistics" /></>)}
             {shouldRenderArtistStatistics && (<><h1>Artist</h1>
-                <ArtistStatistics apiUrl="http://127.0.0.1:3001/api/statistics" /></>)}
+                <ArtistStatistics apiUrl="https://api-ytej.onrender.com/api/statistics" /></>)}
             <FlexContainer>
                 <StyledButton onClick={handleAddSongModalOpen}>Add Song</StyledButton>
             </FlexContainer>
@@ -117,7 +117,7 @@ const SongList = () => {
         
 const dispatchFetchSongs = async (dispatch: Dispatch<AnyAction>) => {
 try {
-    const response = await axios.get('http://localhost:3001/api/songs');
+    const response = await axios.get('https://api-ytej.onrender.com/api/songs');
     dispatch(setSongs(response.data));
     } catch (error) {
     console.error(error);

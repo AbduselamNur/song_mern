@@ -35,7 +35,7 @@ const UpdateSongModal: React.FC<UpdateSongModalProps> = ({ isOpen, onClose, song
 
   const dispatchFetchSongs = async (dispatch: Dispatch<AnyAction>) => {
     try {
-      const response = await axios.get('http://localhost:3001/api/songs');
+      const response = await axios.get('https://api-ytej.onrender.com/api/songs');
       dispatch(setSongs(response.data));
     } catch (error) {
       console.error(error);
@@ -51,7 +51,7 @@ const UpdateSongModal: React.FC<UpdateSongModalProps> = ({ isOpen, onClose, song
   
     try {
       setIsUpdatingSong(true);
-      const response = await axios.put(`http://localhost:3001/api/songs/${song._id}`, updatedSong);
+      const response = await axios.put(`https://api-ytej.onrender.com/api/songs/${song._id}`, updatedSong);
   
       toast.success('Song updated successfully');
       dispatchFetchSongs(dispatch);

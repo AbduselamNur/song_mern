@@ -23,7 +23,7 @@ const AddSongModal: React.FC<AddSongModalProps> = ({ isOpen, onClose }) => {
 
   const dispatchFetchSongs = async (dispatch: Dispatch<AnyAction>) => {
     try {
-      const response = await axios.get('http://localhost:3001/api/songs');
+      const response = await axios.get('https://api-ytej.onrender.com/api/songs');
       dispatch(setSongs(response.data));
     } catch (error) {
       console.error(error);
@@ -40,7 +40,7 @@ const AddSongModal: React.FC<AddSongModalProps> = ({ isOpen, onClose }) => {
 
     try {
       setIsAddingSong(true);
-      const response = await axios.post('http://localhost:3001/api/songs', newSong);
+      const response = await axios.post('https://api-ytej.onrender.com/api/songs', newSong);
       dispatchFetchSongs(dispatch);
       dispatch(addSong(response.data));
       setNewSong({ title: '', artist: '', album: '', genre: '' });

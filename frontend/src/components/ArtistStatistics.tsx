@@ -1,4 +1,3 @@
-// src/components/ArtistStatistics.tsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {CardContainer, Card, StyledParagraph} from './StyledComponents'

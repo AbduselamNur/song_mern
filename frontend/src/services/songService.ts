@@ -7,7 +7,7 @@ import { dispatch } from "../redux/store";
 import { setStatistics } from "../redux/statisticsSlice";
 
 
-const baseUrl = "http://localhost:3001/api";
+const baseUrl = "https://api-ytej.onrender.com/api";
 
 export const fetchSongs = async () => {
     const response = await axios.get(`${baseUrl}/songs`);
@@ -17,7 +17,6 @@ export const fetchSongs = async () => {
 export const fetchStatistics = async () => {
     const response = await axios.get(`${baseUrl}/statistics`);
     dispatch(setStatistics(response.data));
-    // return response.data;
 };
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
