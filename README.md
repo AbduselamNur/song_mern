@@ -15,7 +15,7 @@ Build the Docker image for the backend using `docker build -t backend-app` . in 
 
 Run the Docker container for the backend using `docker run -p 3001:3001 backend-app` in the backend folder.
 
-Run the frontend application using npm start in the frontend folder.
+Run the frontend application using `npm start` in the frontend folder.
 
 Open your browser and go to http://localhost:3000 to see the app in action.
 
