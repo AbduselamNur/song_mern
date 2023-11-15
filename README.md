@@ -23,17 +23,17 @@ Open your browser and go to http://localhost:3000 to see the app in action.
 This project uses the following technologies and tools:
 
 Name	Link	Description
-* MongoDB	[https://www.mongodb.com/]	A NoSQL database to store the song data.
-* ExpressJS	[https://expressjs.com/]	A web framework to handle the requests and responses for the backend.
-* ReactJS	[https://reactjs.org/]	A library to build the user interface for the frontend.
-* Node.js	[https://nodejs.org/]	A runtime environment to run JavaScript code on the server.
-* Mongoose	[https://mongoosejs.com/]	An ORM to interact with MongoDB, model the data and create the schema.
-* Docker	[https://www.docker.com/]	A platform to package the backend application using containers.
-* TypeScript	[https://www.typescriptlang.org/]	A superset of JavaScript that adds static typing and other features.
-* Redux Toolkit	[https://redux-toolkit.js.org/]	A toolkit to manage the state of the frontend application.
-* Redux-Saga	[https://redux-saga.js.org/]	A middleware to make calls to the backend API from the frontend.
-* Emotion	[https://emotion.sh/]	A library to style the frontend components using CSS-in-JS.
-* Styled System	[https://styled-system.com/]	A collection of functions to create responsive and themeable design systems.
+* MongoDB: A NoSQL database to store the song data.
+* ExpressJS: A web framework to handle the requests and responses for the backend.
+* ReactJS: A library to build the user interface for the frontend.
+* Node.js: A runtime environment to run JavaScript code on the server.
+* Mongoose:	An ORM to interact with MongoDB, model the data and create the schema.
+* Docker:	A platform to package the backend application using containers.
+* TypeScript:	A superset of JavaScript that adds static typing and other features.
+* Redux Toolkit: A toolkit to manage the state of the frontend application.
+* Redux-Saga:	A middleware to make calls to the backend API from the frontend.
+* Emotion: A library to style the frontend components using CSS-in-JS.
+* Styled System:	A collection of functions to create responsive and themeable design systems.
 
 ## Features and Functionalities
 This project has the following features and functionalities:
